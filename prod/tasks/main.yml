@@ -1,0 +1,12 @@
+---
+# tasks file for prod
+- name: check tomcat
+  apt:
+   name: tomcat9
+   state: present
+
+- name: copy war from master to prod
+  synchronize:
+   mode: push
+   src: /tmp/mycalcwebapp.war
+   dest: /var/lib/tomcat9/webapps/

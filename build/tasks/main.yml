@@ -1,0 +1,23 @@
+---
+# tasks file for build
+- name: Ensure maven package is present
+  apt:
+   name: maven
+   state: present
+
+- name: get sources from github
+  git:
+   repo: https://github.com/miladhub/calculator-servlet-example
+   dest: '{{dest_folder}}'
+   clone: yes
+
+- name: build app
+  command: mvn --batch-mode --quiet install
+  args:
+   chdir: '{{dest_folder}}'
+
+- name: get war from build to master
+  synchronize:
+    mode: pull
+    src: '{{dest_folder }}/target/mycalcwebapp.war'
+    dest: /tmp/

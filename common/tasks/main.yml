@@ -1,0 +1,13 @@
+---
+# tasks file for common
+- name: Ensure java package is present
+  apt:
+   name: default-jdk
+   state: present
+
+- name: Ensure git package is present
+  apt:
+   name: git
+   state: present
+
+

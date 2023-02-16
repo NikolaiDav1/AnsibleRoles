@@ -1,0 +1,17 @@
+---
+- name: java application build
+  hosts: build
+  become: yes
+
+  roles:
+  - common
+  - build
+
+- name: java application prod
+  hosts: prod
+  become: yes
+
+  roles:
+  - common
+  - prod
+

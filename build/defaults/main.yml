@@ -1,0 +1,4 @@
+---
+# defaults file for common
+dest_folder: /tmp/calculator-servlet-example/
+
